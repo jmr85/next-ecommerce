@@ -1,11 +1,14 @@
-import styles from "./main.module.scss"
+import { Header } from "./components/ui/Header";
 
 export default function Home() {
   return (
-    <main>
-      <h1 className={styles.title}>Nextjs</h1>
-      <hr/>
-      <p className={styles.text}>Bienvenidos al Ecommerce!</p>  
-    </main>
+    <>
+      <Header/>
+      <main className="container m-auto">
+        <h1 className="text-4xl text-blue-600 text-bold my-4">Nextjs</h1>
+        <hr/>
+        <p className="text-base mt-4">Bienvenidos al Ecommerce!</p>  
+      </main>
+    </>
   );
 }
