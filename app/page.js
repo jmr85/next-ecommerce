@@ -2,6 +2,20 @@ import Image from "next/image";
 import { Header } from "./components/ui/Header";
 import Counter from "./components/ui/Counter";
 
+// Metadata estatica
+export const metadata = {
+  title: "Ecommerce App",
+  description: "Ecommerce App made with Nextjs",
+  keywords: ['Ecommerce', 'Nextjs', 'Argentina'],
+  openGraph: {
+    title: 'Ecommerce',
+    description: 'The Ecommerce App',
+    type: 'article',
+    publishedTime: '2024-03-01T00:00:00.000Z',
+    authors: ['@juan.martin.ruiz@gmail.com']
+  }
+}
+
 export default function Home() {
   return (
     <>
