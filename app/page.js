@@ -16,6 +16,19 @@ export const metadata = {
   }
 }
 
+// Metadata dimnamica
+// export async function generateMetadata({params, searchParams}, parent){
+//   const id = params.id
+
+//   const product = await fetch(`https://....../${id}`).
+//   then((res) => res.json())
+
+//   return {
+//     title: product.title,
+//     description: product.description
+//   }
+// } 
+
 export default function Home() {
   return (
     <>
