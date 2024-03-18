@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Header } from "./components/ui/Header";
 import Counter from "./components/ui/Counter";
+import Footer from "./components/ui/Footer";
 
 // Metadata estatica
 export const metadata = {
@@ -52,6 +53,7 @@ export default function Home() {
           alt="package image"
         />
       </main>
+      <Footer/>
     </>
   );
 }
