@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Header } from "./components/ui/Header";
 import Counter from "./components/ui/Counter";
 
@@ -10,6 +11,19 @@ export default function Home() {
         <hr/>
         <p className="text-base mt-4">Bienvenidos al Ecommerce!</p>  
         <Counter/>
+        <Image
+          src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"}
+          width={200}
+          height={200}
+          alt="pikachu image"
+          priority
+        />
+        <Image
+          src={"/package.png"}
+          width={300}
+          height={300}
+          alt="package image"
+        />
       </main>
     </>
   );
