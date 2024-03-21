@@ -1,5 +1,4 @@
 import React from 'react'
-import { Header } from '../components/ui/Header'
 
 export const metadata = {
   title: 'Nosotros - Devbookstore',
@@ -9,7 +8,6 @@ export const metadata = {
 const Nosotros = () => {
   return (
     <>
-      <Header/>
       <main className="container m-auto">
         <h1
           className="text-4xl text-blue-600

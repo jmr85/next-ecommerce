@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { Header } from "./components/ui/Header";
 import Counter from "./components/ui/Counter";
-import Footer from "./components/ui/Footer";
 
 // Metadata estatica
 export const metadata = {
@@ -33,7 +31,6 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Header/>
       <main className="container m-auto">
         <h1 className="text-4xl text-blue-600 text-bold my-4">Nextjs</h1>
         <hr/>
@@ -53,7 +50,6 @@ export default function Home() {
           alt="package image"
         />
       </main>
-      <Footer/>
     </>
   );
 }
