@@ -1,6 +1,8 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const links = [
     {
@@ -18,6 +20,9 @@ const links = [
 ]
 
 export const Header = () => {
+
+    const pathname = usePathname();
+
   return (
     <header className="W-full bg-gray-100">
         <div className="container m-auto py-6 flex justify-between items-center">
@@ -35,7 +40,9 @@ export const Header = () => {
                         return <Link 
                           key={link.label}
                           href={link.href}
-                          className={`text-base text-slate-600 p-3`}
+                          className={`${pathname === 
+                          link.href ? 'font-bold' : ''}
+                          text-base text-slate-600 p-3`}
                         >
                             {link.label}
                         </Link>
