@@ -1,11 +1,17 @@
-import React from 'react'
+'use client'
+import Button from '../components/ui/Button'
+import { useRouter } from 'next/navigation'
 
-export const metadata = {
-  title: 'Nosotros - Devbookstore',
-  description: 'Conoce nuestra historia'
-}
+// "metadata" se usa principalmente para SSR (información para buscadores), surgiendo el conflicto
+// export const metadata = {
+//   title: 'Nosotros - Devbookstore',
+//   description: 'Conoce nuestra historia'
+// }
 
 const Nosotros = () => {
+
+  const router = useRouter()
+
   return (
     <>
       <main className="container m-auto">
@@ -15,8 +21,11 @@ const Nosotros = () => {
         >Nosotros</h1>
         <hr/>
         <p className="text-base mt-4">
-          Nuestra historia...
+          Sitio en construccion
         </p>
+        <Button onClick={() => router.back()}>
+          Volver
+        </Button>
       </main>
     </>
   )
