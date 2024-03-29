@@ -1,4 +1,4 @@
-import ProductDetail from "@/app/components/products/ProductDetail"
+import ProductDetail from "@/components/products/ProductDetail"
 
 const DetailPage = ({params}) => {
     const {slug} = params

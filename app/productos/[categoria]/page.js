@@ -1,6 +1,6 @@
-import CategoriesMenu from '@/app/components/products/CategoriesMenu'
+import CategoriesMenu from '@/components/products/CategoriesMenu'
 // import ProductsList from '../components/products/ProductsList'
-import ProductsList from '@/app/components/products/ProductsList';
+import ProductsList from '@/components/products/ProductsList';
 
 export async function generateMetadata({params, searchParams}, parent) {
     return {

@@ -2,7 +2,7 @@ export default function ContactoLayout ({children}){
   return (
     <>
         {children}
-        <footer className="bg-gray-200 w-full">
+        <footer className="bg-gray-200 w-full fixed bottom-0 h-auto z-50">
             <div className="container m-auto py-4 flex
             items-center gap-4">
                 <h4 className="text-2xl

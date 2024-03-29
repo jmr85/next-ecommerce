@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-100 border-t">
+    <footer className="w-full bg-gray-100 border-t fixed inset-x-0 bottom-0">
         <div className="container m-auto py-2 text-sm text-gray-700 flex justify-between items-center">
             <p>Desarrollado por @juanmartinruiz</p>
 

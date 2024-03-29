@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Counter from "./components/ui/Counter";
+import CategoriesMenu from "@/components/products/CategoriesMenu";
+import ProductsList from "@/components/products/ProductsList";
 
 // Metadata estatica
 export const metadata = {
@@ -35,20 +36,8 @@ export default function Home() {
         <h1 className="text-4xl text-blue-600 text-bold my-4">Nextjs</h1>
         <hr/>
         <p className="text-base mt-4">Bienvenidos al Ecommerce!</p>  
-        <Counter/>
-        <Image
-          src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"}
-          width={200}
-          height={200}
-          alt="pikachu image"
-          priority
-        />
-        <Image
-          src={"/package.png"}
-          width={300}
-          height={300}
-          alt="package image"
-        />
+        <CategoriesMenu/>
+        <ProductsList categoria={"todos"} />
       </main>
     </>
   );
