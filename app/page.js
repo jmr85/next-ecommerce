@@ -2,6 +2,7 @@ import Image from "next/image";
 import CategoriesMenu from "@/components/products/CategoriesMenu";
 import ProductsList from "@/components/products/ProductsList";
 
+
 // Metadata estatica
 export const metadata = {
   title: "Ecommerce App",
@@ -33,11 +34,12 @@ export default function Home() {
   return (
     <>
       <main className="container m-auto">
-        <h1 className="text-4xl text-blue-600 text-bold my-4">Nextjs</h1>
-        <hr/>
-        <p className="text-base mt-4">Bienvenidos al Ecommerce!</p>  
-        <CategoriesMenu/>
-        <ProductsList categoria={"todos"} />
+        <h1 className="text-center text-4xl text-blue-600 text-bold my-4">Bienvenidos al Ecommerce!</h1>
+        <hr/> 
+        <div className="flex gap-10">
+          <CategoriesMenu/>
+          <ProductsList categoria={"todos"} />
+        </div>
       </main>
     </>
   );

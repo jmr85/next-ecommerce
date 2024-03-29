@@ -19,6 +19,10 @@ const links = [
     {
         label: "Contacto",
         href: "/contacto"
+    },
+    {
+        label: "Admin",
+        href: "/admin"
     }
 ]
 
@@ -37,6 +41,7 @@ export const Header = () => {
                     alt="ecommerce icon"
                 />
             </Link>
+            {/* <SearchBox input={"laptop"}/> */}
             <nav className="flex justify-between gap-2">
                 {
                     links.map(link => {
@@ -48,6 +53,15 @@ export const Header = () => {
                           text-base text-slate-600 p-3`}
                         >
                             {link.label}
+                            {/* {
+                                link.label === 'Admin' && <Image
+                                    src={"/login.svg"}
+                                    width={20}
+                                    height={20}
+                                    alt="ecommerce icon"
+                                    className="flex "
+                                />
+                            } */}
                         </Link>
                     })
                 }
