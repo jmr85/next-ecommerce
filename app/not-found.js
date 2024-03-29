@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image"
-import Button from "@/components/ui/Button"
+import {Button} from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 
 export default function NotFound(){
@@ -9,8 +9,7 @@ export default function NotFound(){
     return (
         <>
             <main className="container m-auto">
-
-                <Button onClick={() => router.back()}>
+                <Button variant={"outline"} onClick={() => router.back()}>
                     Volver
                 </Button>
                 <h1 className="text-center text-4xl text-blue-600 my-4">
