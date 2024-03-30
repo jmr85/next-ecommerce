@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import Counter from "../ui/Counter"
-import Button from "../ui/Button"
+import { Button } from "../ui/Button"
 
 const QtySelector = ({ item }) => {
     const [quantity, setQuantity] = useState(1)

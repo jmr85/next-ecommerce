@@ -1,5 +1,5 @@
 'use client'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import { useRouter } from 'next/navigation'
 
 // "metadata" se usa principalmente para SSR (información para buscadores), surgiendo el conflicto

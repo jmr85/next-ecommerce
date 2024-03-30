@@ -1,7 +1,17 @@
 'use client'
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle
+  } from "@/components/ui/navigation-menu"
 
 const links = [
     {
@@ -21,28 +31,29 @@ const links = [
         href: "/contacto"
     },
     {
-        label: "Admin",
-        href: "/admin"
+        label: "",
+        href: "/cart"
     }
 ]
 
+
 export const Header = () => {
 
-    const pathname = usePathname();
+  const pathname = usePathname();
 
   return (
-    <header className="W-full bg-gray-100">
-        <div className="container m-auto py-6 flex justify-between items-center">
+    <header className="w-full bg-gray-100">
+        <div className="container mx-auto py-1 mt-0 flex flex-col md:flex-row justify-between items-center">
             <Link href={"/"}>
                 <Image
                     src={"/logo.png"}
-                    width={200}
-                    height={200}
+                    width={150}
+                    height={50}
                     alt="ecommerce icon"
                 />
             </Link>
             {/* <SearchBox input={"laptop"}/> */}
-            <nav className="flex justify-between gap-2">
+            <nav className="flex flex-col md:flex-row justify-between gap-2 w-full md:w-auto">
                 {
                     links.map(link => {
                         return <Link 
@@ -53,20 +64,44 @@ export const Header = () => {
                           text-base text-slate-600 p-3`}
                         >
                             {link.label}
-                            {/* {
-                                link.label === 'Admin' && <Image
-                                    src={"/login.svg"}
+                            {
+                                link.href === '/cart' && <Image
+                                    src={"/shopping-cart.svg"}
                                     width={20}
                                     height={20}
                                     alt="ecommerce icon"
-                                    className="flex "
+                                    className="ml-2 flex"
                                 />
-                            } */}
+                            }
                         </Link>
                     })
                 }
-            </nav>
-        </div>
+                  <NavigationMenu className="ml-auto my-0 md:ml-0 flex flex-col md:flex-row justify-between items-center">
+                    <NavigationMenuList>
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger>Tu cuenta</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                            <Link href={"/admin"}>
+                                <NavigationMenuLink>
+                                <ul className="grid w-[100px] gap-3 p-4 md:w-[200px] md:grid-cols-2 lg:w-[600px] ">
+                                    Admin
+                                    <Image
+                                            src={"/login.svg"}
+                                            width={20}
+                                            height={20}
+                                            alt="ecommerce icon"
+                                            className="flex "
+                                        />
+                                   </ul>     
+                                </NavigationMenuLink>
+                              </Link>  
+                            </NavigationMenuContent>
+
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                </NavigationMenu> 
+            </nav> 
+        </div> 
     </header>
   )
 }
