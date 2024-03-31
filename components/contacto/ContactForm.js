@@ -44,7 +44,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                 />
 
-                <Button type="submit" className="mx-80">Enviar</Button>
+                <Button type="submit" variant={"outline"} className="mx-80">Enviar</Button>
                 {/* </div> */}
             </form>
     )

@@ -20,7 +20,7 @@ const Nosotros = () => {
           text-bold my-4"
         >Nosotros</h1>
         <hr/>
-        <Button onClick={() => router.back()}>
+        <Button variant={"outline"} onClick={() => router.back()}>
           Volver
         </Button>
         <p className="text-base mt-4">
