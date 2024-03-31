@@ -66,7 +66,7 @@ export const Header = () => {
                             {link.label}
                             {
                                 link.href === '/cart' && <Image
-                                    src={"/shopping-cart.svg"}
+                                    src={"/icons/shopping-cart.svg"}
                                     width={20}
                                     height={20}
                                     alt="ecommerce icon"
