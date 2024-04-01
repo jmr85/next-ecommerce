@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from "next/link";
 
 const getPosts = async() => {
@@ -21,11 +22,15 @@ const Posts = async() => {
         <ul>
                 {
                     posts.map(post => 
-                        <Link href={`/posts/${post.id}`}>
-                            <li key={post.id} className="my-4 list-disc">
-                                {post.title}
-                            </li>
-                        </Link>
+                        <React.Fragment key={post.id}>
+                            <Link href={`/posts/${post.id}`}>
+                                
+                                <li key={post.id} className="my-4 list-disc">
+                                    {post.title}
+                                </li>
+                                
+                            </Link>
+                        </React.Fragment>
                     )
                 }
         </ul>
