@@ -1,5 +1,5 @@
 "use client"
-import { mockData } from "../data/products"
+import { mockData } from "../../data/products"
 import CartItem from "@/components/cart/CartItem"
 
 const CartPage = () => {

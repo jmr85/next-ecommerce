@@ -1,4 +1,4 @@
-import { mockData } from "@/app/data/products"
+import { mockData } from "@/data/products"
 import Image from "next/image"
 import QtySelector from "./QtySelector"
 import GoBack from "../ui/GoBack"

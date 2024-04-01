@@ -1,4 +1,4 @@
-import { mockData } from "@/app/data/products"
+import { mockData } from "@/data/products"
 import ProductCard from "./ProductCard"
 
 const ProductsList = ({categoria}) => {
