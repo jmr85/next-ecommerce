@@ -22,6 +22,7 @@ const Posts = async() => {
         <ul>
                 {
                     posts.map(post => 
+                        // https://react.dev/reference/react/Fragment#rendering-a-list-of-fragments
                         <React.Fragment key={post.id}>
                             <Link href={`/posts/${post.id}`}>
                                 
