@@ -31,6 +31,10 @@ const links = [
         href: "/contacto"
     },
     {
+        label: "Posts",
+        href: "/posts"
+    },
+    {
         label: "",
         href: "/cart"
     }
