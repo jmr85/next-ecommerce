@@ -1,5 +1,5 @@
+import { Suspense } from 'react';
 import CategoriesMenu from '@/components/products/CategoriesMenu'
-// import ProductsList from '../components/products/ProductsList'
 import ProductsList from '@/components/products/ProductsList';
 
 export async function generateMetadata({params, searchParams}, parent) {
@@ -18,7 +18,9 @@ const Productos = ({params}) => {
             <h2 className="text-2xl my-10 border-b pb-4">Productos</h2>
             <div className="flex gap-10">
                 <CategoriesMenu/>
-                <ProductsList categoria={categoria} />
+                <Suspense fallback={<div>Cargando...</div>}>
+                    <ProductsList categoria={categoria} />
+                </Suspense>
             </div>
         </main>
         // <div>
