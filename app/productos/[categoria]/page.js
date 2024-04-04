@@ -8,6 +8,17 @@ export async function generateMetadata({params, searchParams}, parent) {
     }
 }
 
+export function generateStaticParams(){
+    return [
+        {categoria: 'todos'},
+        {categoria: 'tvs'},
+        {categoria: 'heladeras'},
+        {categoria: 'aires'}
+    ]
+}
+
+export const revalidate = 3600; //una hora
+
 const Productos = ({params}) => {
     console.log(`params: ${params}`);
 
