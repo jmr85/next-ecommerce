@@ -34,9 +34,6 @@ const Productos = ({params}) => {
                 </Suspense>
             </div>
         </main>
-        // <div>
-        //     Estas viendo: {params.categoria}
-        // </div>
   )
 }
 
