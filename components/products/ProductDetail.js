@@ -5,11 +5,8 @@ import GoBack from "../ui/GoBack"
 const ProductDetail = async({ slug }) => {
     
     const item = await fetch(`http://localhost:3000/api/product/${slug}`, {
-        cache: 'no-store',
-        next: {
-            revalidate: 0 //el stock o precio puede variar entonces debe cambiar siempre
-        }
-    }).then(res => res.json())
+        cache: 'no-store'
+    }).then(res => res.json());
 
     return (
         <div className="max-w-4xl m-auto">

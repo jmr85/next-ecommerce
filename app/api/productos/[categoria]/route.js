@@ -1,22 +1,21 @@
 import { NextResponse } from "next/server";
-import { mockData } from "@/data/products";
-import { revalidateTag, revalidatePath } from "next/cache";
-
-const sleep = (timer) => {
-    return new Promise((resolve) => setTimeout(resolve, timer))
-}
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "@/firebase/config";
 
 export async function GET(request, {params}){
 
     const {categoria} = params;
 
-    const data = categoria === 'todos' ? mockData : mockData.filter(item => item.type === categoria)
+    const productosRef = collection(db, "productos")
 
-    await sleep(5000)
+    const q = categoria === 'todos' 
+    ? productosRef
+    : query(productosRef, where('type', '=', categoria))
 
-    // revalidateTag('productos');
+    const querySnapshot = await getDocs(q)
 
-    revalidatePath('/productos/[categoria]')
+    const docs = querySnapshot.docs.map(doc => doc.data())
 
-    return NextResponse.json(data)
+    return NextResponse.json(docs);
+    
 }
