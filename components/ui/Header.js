@@ -9,9 +9,9 @@ import {
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle
+    NavigationMenuTrigger
   } from "@/components/ui/navigation-menu"
+import CartWidget from './CartWidget'
 
 const links = [
     {
@@ -64,18 +64,12 @@ export const Header = () => {
                           key={link.label}
                           href={link.href}
                           className={`${pathname === 
-                          link.href ? 'font-bold' : ''}
+                          link.href ? 'font-bold' : link.href === '/cart'? 'text-base text-slate-100 p-3 flex items-center': ''}
                           text-base text-slate-600 p-3`}
                         >
                             {link.label}
                             {
-                                link.href === '/cart' && <Image
-                                    src={"/icons/shopping-cart.svg"}
-                                    width={20}
-                                    height={20}
-                                    alt="ecommerce icon"
-                                    className="ml-2 flex"
-                                />
+                                link.href === '/cart' && <CartWidget/>
                             }
                         </Link>
                     })
