@@ -22,6 +22,17 @@ export const CartProvider = ({children}) => {
         return cart.reduce((acumulador, item) => acumulador + item.quantity, 0)
     }
 
+    /** currencyFormat(1234.56, 'es-AR', 'ARS') // Salida: $1,234.56
+        currencyFormat(1234.56, 'en-US', 'USD') // Salida: $1,234.56
+        currencyFormat(1234.56, 'de-DE', 'EUR') // Salida: 1.234,56 €
+     */
+    const currencyFormat = (value, country, currency) => {
+        return new Intl.NumberFormat(`${country}`, {
+          style: 'currency',
+          currency: `${currency}`
+        }).format(value);
+      };
+
     const totalPrice = () => {      
         return cart.reduce((acumulador, item) => acumulador + item.quantity * item.price, 0);
     }
@@ -40,6 +51,7 @@ export const CartProvider = ({children}) => {
                 addToCart,
                 isInCart, 
                 totalQty, 
+                currencyFormat,
                 totalPrice,
                 removeItem, 
                 emptyCart

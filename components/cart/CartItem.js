@@ -4,7 +4,7 @@ import { useCartContext } from "../context/CartContext"
 
 const CartItem = ({item}) => {
 
-  const {removeItem, totalPrice} = useCartContext()
+  const {removeItem, currencyFormat} = useCartContext()
     
   return (
         <div className="container text-center"> 
@@ -17,7 +17,7 @@ const CartItem = ({item}) => {
                 />
                 <div>
                     <h3>{item.title}</h3>
-                    <p className="text-sm font-semibold">${item.price * item.quantity}</p>
+                    <p className="text-sm font-semibold">{currencyFormat(item.price * item.quantity, 'es-AR', 'ARS')}</p>
                     <p className="text-sm">Cantidad: {item.quantity}</p>
                 </div>
 
@@ -32,9 +32,6 @@ const CartItem = ({item}) => {
                     />
                 </Button>
             </li>
-            <div>
-                <label>Total price: {totalPrice}</label>
-            </div>
         </div>
   )
 }
