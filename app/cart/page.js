@@ -31,7 +31,7 @@ const CartPage = () => {
           </h2>
           <div className="container my-8 text-center">
               <Link href={"/"}>
-                <Button variant="outline">Descubrir Broductos</Button>
+                <Button variant={"outline"}>Descubrir Broductos</Button>
               </Link>
           </div>
         </main>
