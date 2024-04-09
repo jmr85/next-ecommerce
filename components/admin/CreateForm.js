@@ -6,18 +6,28 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { doc, setDoc } from "firebase/firestore"
 import { db, storage } from "@/firebase/config"
 
+// Esta función asíncrona recibe dos parámetros:
+// 1. 'values' es un objeto que contiene los datos del producto a crear, como su título, descripción, precio, etc.
+// 2. 'file' es el archivo de imagen que se asociará al producto.
 const createProduct = async (values, file) => {
     const storageRef = ref(storage, values.slug)
+    // Aquí se crea una referencia al archivo de almacenamiento (Firebase Storage) 
+    // usando la propiedad 'slug' de los 'values' (que probablemente sea un identificador único del producto).
     const fileSnapshop = await uploadBytes(storageRef, file)
-
+    // Se sube el archivo 'file' a la ubicación de almacenamiento especificada por 'storageRef'. 
+    // La función 'uploadBytes' devuelve un 'snapshot' del archivo subido.
     const fileURL = await getDownloadURL(fileSnapshop.ref)
-
+    // Después de subir el archivo, se obtiene la URL de descarga del mismo usando 
+    // la función 'getDownloadURL' y el 'ref' del 'snapshot' del archivo.
     const docRef = doc(db, "productos", values.slug)
     return setDoc(docRef, {
         ...values,
         image: fileURL
 
     }).then(() => console.log("Producto creado exitosamente"))
+    // Finalmente, se guarda el documento en Firestore, incluyendo todos 
+    // los datos del 'values' objeto, y también la URL de la imagen. 
+    // Si la operación se completa correctamente, se muestra un mensaje en la consola.
 }
 
 const CreateForm = () => {
