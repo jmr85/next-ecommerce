@@ -2,6 +2,7 @@ import "./globals.css"
 import { Header } from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import { CartProvider } from "@/components/context/CartContext";
+import { AuthProvider } from "@/components/context/AuthContext";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -12,11 +13,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <CartProvider>
-          <Header/>
-          {children}
-          <Footer/>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Header/>
+            {children}
+            <Footer/>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
