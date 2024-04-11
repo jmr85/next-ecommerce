@@ -4,7 +4,7 @@ import { Button } from "../ui/Button"
 import { useAuthContext } from "../context/AuthContext"
 
 const LoginForm = () => {
-    const {registerUser} = useAuthContext() 
+    const {registerUser, loginUser} = useAuthContext() 
 
     const [values, setValues] = useState({
         email: '',
@@ -44,6 +44,7 @@ const LoginForm = () => {
                     name="password"
                     onChange={handleChange}
                 />
+                <Button onClick={() => loginUser(values)} className="mr-4">Ingresar</Button>
                 <Button onClick={() => registerUser(values)} className="mr-4">Registrarme</Button>
             </form>
         </div>
