@@ -1,8 +1,11 @@
 "use client"
 import { useState } from "react"
 import { Button } from "../ui/Button"
+import { useAuthContext } from "../context/AuthContext"
 
 const LoginForm = () => {
+    const {registerUser} = useAuthContext() 
+
     const [values, setValues] = useState({
         email: '',
         password: ''
@@ -41,7 +44,7 @@ const LoginForm = () => {
                     name="password"
                     onChange={handleChange}
                 />
-                <Button onClick={() => window.alert("envio formulario")} className="mr-4">Ingresar</Button>
+                <Button onClick={() => registerUser(values)} className="mr-4">Registrarme</Button>
             </form>
         </div>
     )
