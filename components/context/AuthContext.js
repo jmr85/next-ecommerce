@@ -1,9 +1,10 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from 'react'
-import { auth } from '@/firebase/config'
+import { auth, googleAuthProvider } from '@/firebase/config'
 import { 
     createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, 
+    signInWithEmailAndPassword,
+    signInWithPopup, 
     onAuthStateChanged, 
     signOut 
 } 
@@ -32,6 +33,10 @@ export const AuthProvider = ({children}) => {
         await signOut(auth)
     }
 
+    const googleLogin = async() => {
+        await signInWithPopup(auth, googleAuthProvider)
+    }
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             console.log(user)
@@ -56,6 +61,7 @@ export const AuthProvider = ({children}) => {
             user,
             registerUser,
             loginUser,
+            googleLogin,
             logout
         }}>
             {children}
