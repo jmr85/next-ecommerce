@@ -1,12 +1,17 @@
 'use client'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import { auth } from '@/firebase/config'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signOut 
+} 
+from 'firebase/auth'
 
 const AuthContext = createContext()
 
 export const useAuthContext = () => useContext(AuthContext)
-
 
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState({
@@ -16,34 +21,42 @@ export const AuthProvider = ({children}) => {
     })
 
     const registerUser = async(values) => {
-       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password)
-       console.log(userCredential)
-
-       const user = userCredential.user
-
-       setUser({
-            logged: true,
-            email: user.email,
-            uid: user.uid
-       })
+        await createUserWithEmailAndPassword(auth, values.email, values.password)
     }
 
     const loginUser = async(values) => {
-        const userCredentialLogin = await signInWithEmailAndPassword(auth, values.email, values.password)
-        const user = userCredentialLogin.user
-
-        setUser({
-            logged: true,
-            email: user.email,
-            uid: user.uid
-        })
+        await signInWithEmailAndPassword(auth, values.email, values.password)
     }
-  
+
+    const logout = async() => {
+        await signOut(auth)
+    }
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            console.log(user)
+            if(user){
+                setUser({
+                    logged: true,
+                    email: user.email,
+                    uid: user.uid
+               })
+            }else{
+                setUser({
+                    logged: false,
+                    email: null,
+                    uid: null
+               })
+            }
+        })
+    }, [])
+
     return (
         <AuthContext.Provider value={{
+            user,
             registerUser,
             loginUser,
-            user
+            logout
         }}>
             {children}
         </AuthContext.Provider>
