@@ -51,7 +51,7 @@ const CreateForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await createProduct(values)
+        await createProduct(values, file)
     }
 
     return (
