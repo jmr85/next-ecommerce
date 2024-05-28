@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Button from "../ui/Button"
+import { Button } from "../ui/Button"
 import { db, storage } from "@/firebase/config"
 import { doc, updateDoc } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
@@ -23,8 +23,7 @@ const updateProduct = async (slug, values, file) => {
         price: Number(values.price),
         type: values.type,
         image: fileURL
-    })
-        .then(() => console.log("Producto actualizado correctamente"))
+    }).then(() => console.log("Producto actualizado correctamente"))
 }
 
 
