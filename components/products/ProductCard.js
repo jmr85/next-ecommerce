@@ -10,7 +10,7 @@ const ProductCard = ({ item }) => {
             >
                 <Image
                     alt={item.title}
-                    src={`/imgs/products/${item.image}`}
+                    src={item.image}
                     width={288}
                     height={288}
                     style={{objectFit: "contain"}}

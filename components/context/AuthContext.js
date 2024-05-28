@@ -65,7 +65,7 @@ export const AuthProvider = ({children}) => {
                })
             }
         })
-    }, [])
+    }, [router])
 
     return (
         <AuthContext.Provider value={{

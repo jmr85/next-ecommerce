@@ -40,7 +40,7 @@ const ProductsTable = async () => {
                                     <td className="p-2">{item.type}</td>
                                     <td className="p-2">
                                         <Image
-                                            src={`/imgs/products/${item.image}`}
+                                            src={item.image}
                                             alt={item.title}
                                             width={80}
                                             height={80}
