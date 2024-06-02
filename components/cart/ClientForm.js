@@ -2,11 +2,35 @@
 import { useState } from "react"
 import { Button } from "../ui/Button"
 import { useCartContext } from "../context/CartContext"
+import { useAuthContext } from "../context/AuthContext"
 import { db } from "@/firebase/config"
-import { setDoc, doc, Timestamp } from "firebase/firestore"
+import { setDoc, doc, Timestamp, getDoc, writeBatch } from "firebase/firestore"
 
 
 const createOrder = async (values, items) => {
+    //items es cart (array)
+    const docsPromises = items.map((item)=>{
+        const docRef = doc(db, "productos", item.slug)
+        return getDoc(docRef) // devuelve promesa, me parece que deberia devolver  un array
+    })
+
+    const docs = await Promise.all(docsPromises)
+    const batch = writeBatch(db)
+    const outOfStock = []
+
+    docs.forEach(doc => {
+       const {inStock, slug} = doc.data()
+       const itemInCart = items.find(item => item.slug === slug)
+       
+       if(itemInCart.quantity <= inStock){
+           batch.update(doc.ref, {inStock: inStock - itemInCart.quantity})
+       }else{
+           outOfStock.push(itemInCart)
+       }
+    })
+
+    if(outOfStock.length > 0) return outOfStock
+
     const order = {
         client: values,
         items: items.map(item => ({
@@ -20,18 +44,21 @@ const createOrder = async (values, items) => {
 
     const docId = Timestamp.fromDate(new Date()).toMillis()
     const orderRef = doc(db, "orders", String(docId))
+    await batch.commit()
     await setDoc(orderRef, order)
 
     return docId
 }
 
 const ClientForm = () => {
+
+    const { user } = useAuthContext()
     const { cart } = useCartContext()
 
     const [values, setValues] = useState({
-        email: '',
+        email: user.email,
         direccion: '',
-        nombre: ''
+        nombre: user.displayName
     })
 
     const handleChange = (e) => { 
@@ -44,7 +71,7 @@ const ClientForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const result = await createOrder(values, cart)
-        console.log(result)
+        console.log("RESULT ---->>>>>>>>>>> ", result)
     }
 
     return (

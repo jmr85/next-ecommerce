@@ -20,6 +20,14 @@ const ProductCard = ({ item }) => {
                     <h4 className="text-sm my-4">{item.title}</h4>
                     <p className="text-2xl font-semibold mb-6">$ {item.price}</p>
                 </div>
+
+                {
+                    item.inStock === 0 && 
+                        <p className="bg-red-500 text-white text-center py-2">
+                            Agotado
+                        </p>
+                }
+
             </Link>
         </article>
     )
