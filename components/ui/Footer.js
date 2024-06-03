@@ -2,11 +2,11 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-100 border-t inset-x-0 bottom-0">
-        <div className="container m-auto py-2 text-sm text-gray-700 flex justify-between items-center">
+    <footer className="w-full bg-gray-100 border-t fixed inset-x-0 bottom-0">
+        <div className="container mx-auto py-2 text-sm text-gray-700 flex justify-between items-center">
             <p>Desarrollado por @juanmartinruiz</p>
 
-            <div className="felx items-center gap-2">
+            <div className="flex items-center gap-2">
                 <p>Powered by</p>
                 <Image
                     src={"/next.svg"}

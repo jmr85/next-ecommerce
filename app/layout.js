@@ -15,9 +15,13 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <CartProvider>
+            <div className="min-h-screen flex flex-col pb-16">
             <Header/>
-            {children}
+              <main className="flex-grow">
+                {children}
+              </main>
             <Footer/>
+            </div>
           </CartProvider>
         </AuthProvider>
       </body>
