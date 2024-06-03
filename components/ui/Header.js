@@ -12,6 +12,7 @@ import {
     NavigationMenuTrigger
   } from "@/components/ui/navigation-menu"
 import CartWidget from './CartWidget'
+import { useAuthContext } from "@/components/context/AuthContext"
 
 const links = [
     {
@@ -44,6 +45,7 @@ const links = [
 export const Header = () => {
 
   const pathname = usePathname();
+  const {user} = useAuthContext()
 
   return (
     <header className="w-full bg-gray-100">
@@ -72,7 +74,16 @@ export const Header = () => {
                                 link.href === '/cart' && <CartWidget/>
                             }
                         </Link>
-                    })
+                    })                        
+                }
+                {
+                    user.logged && 
+                    <Link 
+                        href="/admin/orders" 
+                        className={`${pathname === '/admin/orders' ? 'font-bold' : ''} text-base text-slate-600 p-3`}
+                    >
+                        Ordenes
+                    </Link>
                 }
                   <NavigationMenu className="ml-auto my-0 md:ml-0 flex flex-col md:flex-row justify-between items-center">
                     <NavigationMenuList>
