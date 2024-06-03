@@ -1,5 +1,6 @@
 'use client'
 import { createContext, useContext, useState } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const CartContext = createContext();
 
@@ -7,7 +8,9 @@ export const useCartContext = () => useContext(CartContext)
 
 export const CartProvider = ({children}) => {
 
-    const [cart, setCart] = useState([])
+    // "items" del hook que se pasa como key es el setCart de localStorage
+    const [cart, setCart] = useLocalStorage([], "items");
+
     console.log(cart)
 
     const addToCart = (item) => {
