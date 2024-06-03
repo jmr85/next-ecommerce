@@ -5,6 +5,8 @@ import { useCartContext } from "../context/CartContext"
 import { useAuthContext } from "../context/AuthContext"
 import { db } from "@/firebase/config"
 import { setDoc, doc, Timestamp, getDoc, writeBatch } from "firebase/firestore"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 const createOrder = async (values, items) => {
@@ -53,7 +55,7 @@ const createOrder = async (values, items) => {
 const ClientForm = () => {
 
     const { user } = useAuthContext()
-    const { cart } = useCartContext()
+    const { cart, setCart, setOrderSubmitted } = useCartContext()
 
     const [values, setValues] = useState({
         email: user.email,
@@ -72,37 +74,43 @@ const ClientForm = () => {
         e.preventDefault()
         const result = await createOrder(values, cart)
         console.log("RESULT ---->>>>>>>>>>> ", result)
+        withReactContent(Swal).fire({
+            title: <i>Orden Creada</i>,
+            text: 'El ID de su orden es: ' + result,
+        })
+        setCart([])
+        setOrderSubmitted(true)
     }
 
     return (
-        <form onSubmit={handleSubmit} className="my-12">
-            <input
-                type="nombre"
-                required
-                placeholder="Tu nombre"
-                className="p-2 rounded w-1/2 border border-blue-100 block my-4"
-                name="nombre"
-                onChange={handleChange}
-            />
-            <input
-                type="direccion"
-                required
-                placeholder="Tu dirección"
-                className="p-2 rounded w-1/2 border border-blue-100 block my-4"
-                name="direccion"
-                onChange={handleChange}
-            />
-            <input
-                type="email"
-                required
-                placeholder="Tu email"
-                className="p-2 rounded w-1/2 border border-blue-100 block my-4"
-                name="email"
-                onChange={handleChange}
-            />
+                <form onSubmit={handleSubmit} className="my-12">
+                    <input
+                        type="nombre"
+                        required
+                        placeholder="Tu nombre"
+                        className="p-2 rounded w-1/2 border border-blue-100 block my-4"
+                        name="nombre"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="direccion"
+                        required
+                        placeholder="Tu dirección"
+                        className="p-2 rounded w-1/2 border border-blue-100 block my-4"
+                        name="direccion"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="email"
+                        required
+                        placeholder="Tu email"
+                        className="p-2 rounded w-1/2 border border-blue-100 block my-4"
+                        name="email"
+                        onChange={handleChange}
+                    />
 
-            <Button type="submit">Terminar mi compra</Button>
-        </form>
+                    <Button type="submit">Terminar mi compra</Button>
+                </form>
     )
 }
 

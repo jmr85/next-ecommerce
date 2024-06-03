@@ -10,6 +10,7 @@ export const CartProvider = ({children}) => {
 
     // "items" del hook que se pasa como key es el setCart de localStorage
     const [cart, setCart] = useLocalStorage([], "items");
+    const [orderSubmitted, setOrderSubmitted] = useState(false)
 
     console.log(cart)
 
@@ -51,13 +52,16 @@ export const CartProvider = ({children}) => {
     return (
         <CartContext.Provider value={{
                 cart,
+                setCart,
                 addToCart,
                 isInCart, 
                 totalQty, 
                 currencyFormat,
                 totalPrice,
                 removeItem, 
-                emptyCart
+                emptyCart,
+                orderSubmitted,
+                setOrderSubmitted
             }}>
             {children}
         </CartContext.Provider> 

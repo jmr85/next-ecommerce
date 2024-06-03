@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/Button"
 import Link from "next/link"
 
 const CartPage = () => {
-  const { cart } = useCartContext()
+  const { cart, orderSubmitted } = useCartContext()
     return (
       <>
         { 
-          cart.length ?
+          cart.length && !orderSubmitted ?
             <main className="container m-auto">
                 <h2 className="text-2xl my-10 border-b pb-4">Tu compra</h2>
                 <CartList />
