@@ -20,7 +20,8 @@ const Orders = async () => {
                     orders.map(order => (
                         <li key={order.id}>
                             <p>Comprador: {order.client.nombre}</p>
-                            <p>Fecha: {new Date(`${order.client.date}`)}</p>
+                            <p>Fecha: {new Date(order.date.seconds * 1000).toLocaleString()}</p>
+                            
                         </li>
                     ))
                 }

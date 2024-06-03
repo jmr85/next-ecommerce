@@ -39,7 +39,7 @@ const createOrder = async (values, items) => {
             slug: item.slug,
             quantity: item.quantity
         })),
-        date: new Date().toISOString()
+        date: Timestamp.fromDate(new Date())
     }
 
     const docId = Timestamp.fromDate(new Date()).toMillis()
