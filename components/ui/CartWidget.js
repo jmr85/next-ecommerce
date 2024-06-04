@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link"
 import { useCartContext } from "../context/CartContext"
 import Image from "next/image"
 
