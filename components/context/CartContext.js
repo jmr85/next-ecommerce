@@ -23,8 +23,11 @@ export const CartProvider = ({children}) => {
     }
 
     const totalQty = () => {
-        return cart.reduce((acumulador, item) => acumulador + item.quantity, 0)
-    }
+        if (!Array.isArray(cart) || cart === null) {
+            return 0; // Devuelve 0 si cart no es un array o es null
+        }
+        return cart.reduce((acumulador, item) => acumulador + item.quantity, 0);
+    };
 
     /** currencyFormat(1234.56, 'es-AR', 'ARS') // Salida: $1,234.56
         currencyFormat(1234.56, 'en-US', 'USD') // Salida: $1,234.56
