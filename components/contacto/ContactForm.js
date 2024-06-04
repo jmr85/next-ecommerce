@@ -20,8 +20,7 @@ const ContactForm = () => {
         e.preventDefault()
 
         console.log(values)
-
-        await fetch('http://localhost:3000/api/contacto', {
+        await fetch(`http://${process.env.VERCEL_URL}/api/contacto`, {
             method: 'POST',
             body: JSON.stringify(values)
         })

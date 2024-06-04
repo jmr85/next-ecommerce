@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard"
 
 const ProductsList = async({categoria}) => {
-    const items = await fetch(`http:localhost:3000/api/productos/${categoria}`, {
+    const items = await fetch(`http://${process.env.VERCEL_URL}/api/productos/${categoria}`, {
             cache: 'no-store',
         }).then( r => r.json())
 
