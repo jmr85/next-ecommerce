@@ -4,10 +4,7 @@ import Link from "next/link";
 const getPosts = async() => {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts', 
         {
-            cache: "no-store",
-            next: {
-                revalidate: 0 //con cero no catchea nunca
-            }
+            cache: "no-store"
         }
     )
 
