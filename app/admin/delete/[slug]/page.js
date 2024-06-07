@@ -2,7 +2,7 @@ import Link from "next/link"
 
 const DeletePage = async ({ params }) => {
   const { slug } = params
-  const response = await fetch(`http://${process.env.VERCEL_URL}/api/product/${slug}`, {
+  const response = await fetch(`http://${process.env.VERCEL_URL}/api/product/${slug}.json`, {
     cache: 'no-store',
     method: 'DELETE',
   }).then(res => res.json())
