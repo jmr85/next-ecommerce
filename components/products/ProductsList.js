@@ -3,6 +3,9 @@ import ProductCard from "./ProductCard"
 const ProductsList = async({categoria}) => {
     const items = await fetch(`http://${process.env.VERCEL_URL}/api/productos/${categoria}`, {
             cache: 'no-store',
+            headers: {  
+                Accept: "application/json"  
+              }  
         }).then( r => r.json())
 
     console.log(items)

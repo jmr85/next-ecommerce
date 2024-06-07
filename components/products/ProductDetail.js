@@ -5,7 +5,10 @@ import GoBack from "../ui/GoBack"
 const ProductDetail = async({ slug }) => {
     
     const item = await fetch(`http://${process.env.VERCEL_URL}/api/product/${slug}`, {
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {  
+            Accept: "application/json"  
+          }  
     }).then(res => res.json());
 
     return (
