@@ -10,7 +10,7 @@ const CartPage = () => {
     return (
       <>
         { 
-          cart.length && !orderSubmitted ?
+          cart.length > 0 && !orderSubmitted ?
             <main className="container m-auto">
                 <h2 className="text-2xl my-10 border-b pb-4">Tu compra</h2>
                 <CartList />
