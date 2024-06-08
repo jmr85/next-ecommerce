@@ -3,7 +3,7 @@ import { useCartContext } from "../context/CartContext"
 import Image from "next/image"
 
 const CartWidget = () => {
-    const { totalQty } = useCartContext()
+    const { totalQty, isCartLoaded } = useCartContext()
 
     return (
         <>
@@ -14,7 +14,10 @@ const CartWidget = () => {
                 width={30}
                 height={30}
             />
-            <span>{totalQty() !== 0 && totalQty()}</span>
+           
+            {isCartLoaded && totalQty() > 0 && (
+                <span>{totalQty()}</span>
+            )}
         {/* </Link> */}
         </>
     )

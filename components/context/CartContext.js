@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const CartContext = createContext();
@@ -11,6 +11,16 @@ export const CartProvider = ({children}) => {
     // "items" del hook que se pasa como key es el setCart de localStorage
     const [cart, setCart] = useLocalStorage([], "items");
     const [orderSubmitted, setOrderSubmitted] = useState(false)
+    const [isCartLoaded, setIsCartLoaded] = useState(false);
+
+    useEffect(() => {
+        // Simula un pequeño retraso para asegurar que localStorage se ha leido
+        const timer = setTimeout(() => {
+            setIsCartLoaded(true);
+        }, 100);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     console.log(cart)
 
@@ -64,7 +74,8 @@ export const CartProvider = ({children}) => {
                 removeItem, 
                 emptyCart,
                 orderSubmitted,
-                setOrderSubmitted
+                setOrderSubmitted,
+                isCartLoaded
             }}>
             {children}
         </CartContext.Provider> 
