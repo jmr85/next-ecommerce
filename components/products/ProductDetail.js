@@ -2,10 +2,12 @@ import Image from "next/image"
 import QtySelector from "./QtySelector"
 import GoBack from "../ui/GoBack"
 
+export const dynamic = 'force-dynamic'
+
 const ProductDetail = async({ slug }) => {
-    
+    console.log('API URL ------>>>>>>>> ', process.env.NEXT_PUBLIC_API_URL);
     const item = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${slug}`, {
-        cache: 'no-store'  
+        cache: 'no-store',  
     }).then(res => res.json());
 
     return (
