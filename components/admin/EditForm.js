@@ -5,6 +5,7 @@ import { Button } from "../ui/Button"
 import { db, storage } from "@/firebase/config"
 import { doc, updateDoc } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
+import { useRouter } from 'next/navigation'
 
 const updateProduct = async (slug, values, file) => {
     let fileURL = values.image
@@ -32,6 +33,8 @@ const EditForm = ({ item }) => {
     const [values, setValues] = useState({ title, description, inStock, price, type, image })
     const [file, setFile] = useState(null)
 
+    const router = useRouter()
+
     const handleChange = (e) => {
         setValues({
             ...values,
@@ -43,10 +46,16 @@ const EditForm = ({ item }) => {
         e.preventDefault()
 
         await updateProduct(item.slug, values, file)
+        setTimeout(() => {
+            router.push("/admin")
+        }, 500)
     }
 
     return (
         <div className="container m-auto mt-6 max-w-lg">
+            <Button variant={"outline"} onClick={() => router.back()}>
+                Volver
+            </Button>
             <form onSubmit={handleSubmit} className="my-12">
                 <label>Nombre: </label>
                 <input

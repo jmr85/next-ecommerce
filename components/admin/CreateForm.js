@@ -5,6 +5,7 @@ import { Button } from "../ui/Button"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { doc, setDoc } from "firebase/firestore"
 import { db, storage } from "@/firebase/config"
+import { useRouter } from 'next/navigation'
 
 // Esta función asíncrona recibe dos parámetros:
 // 1. 'values' es un objeto que contiene los datos del producto a crear, como su título, descripción, precio, etc.
@@ -42,6 +43,8 @@ const CreateForm = () => {
 
     const [file, setFile] = useState(null)
 
+    const router = useRouter()
+
     const handleChange = (e) => {
         setValues({
             ...values,
@@ -52,10 +55,16 @@ const CreateForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await createProduct(values, file)
+        setTimeout(() => {
+            router.push("/admin")
+        }, 500)
     }
 
     return (
         <div className="container m-auto mt-6 max-w-lg">
+             <Button variant={"outline"} onClick={() => router.back()}>
+                Volver
+            </Button>
             <form onSubmit={handleSubmit} className="my-12">
                 <label>Slug: </label>
                 <input
