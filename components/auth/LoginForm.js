@@ -45,7 +45,7 @@ const LoginForm = () => {
                     onChange={handleChange}
                 />
                 <Button onClick={() => loginUser(values)} className="mr-4">Ingresar</Button>
-                <Button onClick={googleLogin} className="mr-4">Ingresa con Google</Button>
+                <Button onClick={() => googleLogin()} className="mr-4">Ingresa con Google</Button>
                 <Button onClick={() => registerUser(values)} className="mt-2 block">Registrarme</Button>
             </form>
         </div>
